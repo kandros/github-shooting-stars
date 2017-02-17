@@ -1,0 +1,25 @@
+{
+  "name": "github-shooting-stars",
+  "version": "1.0.0",
+  "author": "jaga santagostino <jagasantagostino@gmail.com>",
+  "scripts": {
+    "start": "micro ./src",
+    "dev": "NODE_ENV=development nodemon --exec 'micro ./src'"
+  },
+  "dependencies": {
+    "axios": "^0.15.3",
+    "firebase": "^3.6.9",
+    "lodash": "^4.17.4",
+    "micro": "^7.0.6",
+    "micro-jwt-auth": "^1.3.5",
+    "nodemailer": "^3.0.2",
+    "prettyjson": "^1.2.1",
+    "xoauth2": "^1.2.0"
+  },
+  "devDependencies": {
+    "nodemon": "^1.11.0"
+  },
+  "now": {
+    "alias": "github-shooting-stars.jagasantagostino.com"
+  }
+}

@@ -1,5 +1,6 @@
 const nodemailer = require('nodemailer')
 const xoauth2 = require('xoauth2')
+const axios = require('axios')
 
 /**
  * How to find token/ids
@@ -23,11 +24,22 @@ const transporter = nodemailer.createTransport({
     }
 })
 
-module.exports.sendEmail = function(shootingStars) {
+function getHtml(repos) {
+    return axios.post(process.env.email_template_rendenderer_url, {
+        templateName: 'github-shooting-stars',
+        data: {
+            repos
+        }
+    }).catch(err => {
+        console.log(err)
+    })
+}
+
+module.exports.sendEmail = async function(repos) {
     const mailOptions = Object.assign({}, defaultOptions)
     
-    mailOptions.text = JSON.stringify(shootingStars, null, 2)
-    mailOptions.html = JSON.stringify(shootingStars, null, 2)
+    mailOptions.text = JSON.stringify(repos, null, 2)
+    mailOptions.html = await getHtml(repos)
     
     transporter.sendMail(mailOptions, (error, info) => {
         if (error) {

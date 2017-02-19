@@ -30,6 +30,10 @@ function getHtml(repos) {
             data: {
                 repos
             }
+        }, {
+            headers: {
+                'Auhorization': process.env.email_template_rendenderer_auth_token
+            }
         })
         .then(res => res.data)
         .catch(err => {

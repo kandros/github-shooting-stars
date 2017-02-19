@@ -6,4 +6,4 @@ nodejs microservice based on [Micro](https://github.com/zeit/micro) that fetches
 - send repositories are considered 'consumed' and wont appear again untill all repos all been send once
 - consumed repos persistency on firebase
 
-originally build as part of [Github Shooting Stars architecture](https://github.com/kandros/github-shooting-stars-architecture) project
+build as part of [Github Shooting Stars architecture](https://github.com/kandros/github-shooting-stars-architecture) project

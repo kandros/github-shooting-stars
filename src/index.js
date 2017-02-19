@@ -48,6 +48,6 @@ const handle = async({ url }) => {
 }
 
 module.exports = compose(
-    jwtAuth(process.env.JWT_SECRET),
+    jwtAuth(process.env.jwt_secret),
     handleStatus
 )(handle)

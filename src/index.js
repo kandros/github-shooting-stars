@@ -1,5 +1,9 @@
 'use strict'
 
+if ('development' === process.env.NODE_ENV) {
+    require('dotenv').config()
+}
+
 const shuffle = require('lodash/shuffle')
 const handleStatus = require('./utils/handle-status')
 const compose = require('./utils/compose')
@@ -38,9 +42,13 @@ const handle = async({ url }) => {
             }
         ))
         
-        sendEmail(shootingStars)
+        try {
+            await sendEmail(shootingStars)
+            return 'sending...'
+        } catch(e) {
+            return 'something went wrong'
+        }
         
-        return 'sending...'
         
     } else {
         return 'no action'

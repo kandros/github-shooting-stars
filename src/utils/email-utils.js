@@ -26,13 +26,16 @@ const transporter = nodemailer.createTransport({
 
 function getHtml(repos) {
     return axios.post(process.env.email_template_rendenderer_url, {
-        templateName: 'github-shooting-stars',
-        data: {
-            repos
-        }
-    }).catch(err => {
-        console.log(err)
-    })
+            templateName: 'github-shooting-stars',
+            data: {
+                repos
+            }
+        })
+        .then(res => res.data)
+        .catch(err => {
+            console.log(err)
+            throw new Error(err)
+        })
 }
 
 module.exports.sendEmail = async function(repos) {

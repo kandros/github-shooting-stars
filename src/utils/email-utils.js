@@ -32,7 +32,7 @@ function getHtml(repos) {
             }
         }, {
             headers: {
-                'Auhorization': process.env.email_template_rendenderer_auth_token
+                'Authorization': process.env.email_template_rendenderer_auth_token
             }
         })
         .then(res => res.data)
